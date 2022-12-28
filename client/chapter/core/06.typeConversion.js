@@ -21,7 +21,7 @@ console.log(String(days));
 // boolean
 let isKind = true;
 console.log(isKind);
-console.log(isKind + '');
+console.log(isKind + ``);
 //+ ''을 하면 문자형으로 강제 형변환
 /* 데이터 → 숫자 ----------------------------------------------------------- */
 
