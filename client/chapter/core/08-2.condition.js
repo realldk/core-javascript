@@ -56,3 +56,5 @@ if (userName == 'Admin') {
 }
 
 // 대소문자 구별없이 되게 해보기 String의 속성이용?
+// 1. 대문자로 변환 : str.toUpperCase()
+// 2. 소문자로 변환 : str.toLowerCase()
