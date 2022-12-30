@@ -2,6 +2,9 @@
 /* Switch                                                                 */
 /* ---------------------------------------------------------------------- */
 
+let boolcheck = true + 1;
+console.log(boolcheck);
+
 
 const MORNING    = '아침',
       LUNCH      = '점심',
