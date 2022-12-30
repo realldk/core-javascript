@@ -20,26 +20,30 @@ const frontEndDev = [
   'Redux',
 ];
 
-// let length = frontEndDev.length - 1;
+/* 배열의 값들을 역순으로 출력하기
 
-// while (length >= 0) {
-//   console.log(frontEndDev[length]);
-//   length--;
-// }
+let length = frontEndDev.length - 1;
 
-// 변수 안쓰고 하는 방법, but 배열이 없어지는
+while (length >= 0) {
+  console.log(frontEndDev[length]);
+  length--;
+} */
+
+
+/* 변수 안쓰고 하는 방법, but 배열이 없어지는
 
 while (frontEndDev.length) {
   console.log(frontEndDev.pop());
-}
+} */
 
 
-// 배열을 파괴하지 않고 하는 방법
-// 얕은 복사
-// let copyArray = [... frontEndDev];
-// let copyArray = frontEndDev 를 하면 frontEndDev.pop했을 때 copayArray도 참조값이 날라간다.
+/* 배열을 파괴하지 않고 하는 방법
+얕은 복사
+let copyArray = [... frontEndDev];
+let copyArray = frontEndDev 를 하면 frontEndDev.pop했을 때 copyArray도 참조값이 날라간다.
 
-// let copyArray = frontEndDev.slice();
+let copyArray = frontEndDev.slice(); */
+
 
 /* 프론트엔드 개발 집합 항목 출력 ---------------------------------------------- */
 
