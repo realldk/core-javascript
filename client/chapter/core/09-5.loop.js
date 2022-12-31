@@ -8,13 +8,13 @@ const arrayLike = {
   0: 'body',
   1: 'head',
   2: 'div',
-  length: 3;
- // [Symbol.iterator](){...}
+  length: 3,
+  // [Symbol.iterator](){...}
 }
 
 // for(let value of arrayLike){
   
-  // console.log(value);
+//   console.log(value);
 // }
 
 let str = '유사배열';
@@ -58,12 +58,21 @@ const languages = [
 
 // for ~ of 문
 // - 특정 조건에서 건너띄기
-// - 특정 조건에서 중단하기
 
 for(let value of languages) {
-  if (value of languages === 'java') break;
-  console.log(languages);
+  // console.table(value.name);
+  if(value.name === 'Java') continue;
+  console.table(value);
 }
+
+// - 특정 조건에서 중단하기
+
+// for(let value of languages) {
+//   // console. table(value.name);
+//   let name = value.name;
+//   if (value === 'java') break;
+//   console.log(value);
+// }
 
 
 const randomUser = {

@@ -19,9 +19,11 @@ const javaScript = {
 // console.log(javaScript.hasOwnProperty(key)); 
 // 이렇게 써버리면 객체에 hasOwnProperty라는 키가 있고 값으로 함수 객체가 있을 때 함수의 return값이 나올 수 있다. 때문에 이렇게 보다는 진짜 Object의 hasOwnProperty함수를 쓰는게 좋다.
 
-// 객체의 속성(property) 포함 여부 확인 방법
+/* 객체의 속성(property) 포함 여부 확인 방법
+let key = '해당 키 식별자';
+console.log(key in javaScript); */
+
 // - 모든 객체가 사용 가능하도록 속성이 확장되었을 때 포함 여부 결과는?
-// console.log(key in javaScript);
 // Object.prototype.nickName = 'tiger';
 
 // 객체 자신의 속성인지 확인하는 방법
@@ -33,19 +35,19 @@ const javaScript = {
 
 // for ~ in 문
 // - 객체 자신의 속성만 순환하려면?
-for (let key in javaScript) {
-  // if (Object.prototype.hasOwnProperty.call(javaScript, key)) {
-  // }
-  console.log(key);
-}
-// - 배열 객체 순환에 사용할 경우?
-// 객체에 양보하라. for in 쓰지마라.
+// for (let key in javaScript) {
+//   if (Object.prototype.hasOwnProperty.call(javaScript, key)) {
+//     console.log(javaScript[key]);
+//   }
+// }
+// // - 배열 객체 순환에 사용할 경우?
+// // 객체에 양보하라. for in 쓰지마라?
 
 let tens = [10,100,1000,10000];
 
 
 for(let value in tens){
   if( ({}).hasOwnProperty.call(tens,value)){
-    console.log(tens[value]);
+    console.log(value);
   }
 }
