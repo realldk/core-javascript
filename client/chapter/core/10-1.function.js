@@ -95,7 +95,7 @@ function rem(pxValue, base = 16) {
 console.assert(rem(20) === '1.25rem');
 console.assert(rem('30px') === '1.875rem');
 console.assert(rem('56px', 10) === '5.6rem');
-console.log(rem('45px'));
+console.log(rem(20));
 // css(node: string, prop: string, value: number|strung) : string;
 let css;
 
