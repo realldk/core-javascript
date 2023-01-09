@@ -40,7 +40,7 @@ console.log(data);
 //   console.log(err);
 //   console.log(err.name);
 //   console.log(err.message);
-//   console.log(er.stack);
+//   console.log(err.stack);
 // }
 
 try{
