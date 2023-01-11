@@ -1,4 +1,3 @@
-getAttr('.first','class') // first
 
 function getAttr(node, prop) {
   if (typeof node === 'string') {
@@ -7,6 +6,7 @@ function getAttr(node, prop) {
   }
   return node.getAttribute(prop);
 }
+// getAttr('.first','class') // first
 
 // const second = getNode('.second');
 

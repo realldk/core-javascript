@@ -4,5 +4,6 @@ h1 {
   align-items: center;
   height: 100vh;
   margin: auto;
+  /* display: inline-block; */
 }
 

@@ -34,7 +34,7 @@ first.setAttribute('some', 'hello');
 console.log(first);
 // - elementNode.removeAttribute(name) – 속성값을 지움
 first.removeAttribute('some');
-first.removeAttribute('some', ''); //이런식으로도 지울 수 있다.
+first.setAttribute('some', ''); //이런식으로도 지울 수 있다.
 // - elementNode.attributes – 열거 가능한(iterable) 속성 집합을 반환함
 console.log(first.attributes);
 
@@ -61,6 +61,8 @@ function getAttr(node, prop) {
     node = getNode(node);
     console.log(node);
   }
+  if(typeof prop !== 'string') throw new TypeError('getAttr 함수의 두 번째 인자는 문자 타입이어야 합니다.');
+
   return node.getAttribute(prop);
 }
 
@@ -71,9 +73,9 @@ function getAttr(node, prop) {
 function setAttr(node, prop, value) {
   if (typeof node === 'string') node = getNode(node);
   if(typeof prop !== 'string') throw new TypeError('setAttr 함수의 두 번째 인자는 문자 타입이어야 합니다.');
-  // dataset으로 처리한 것 처럼 만들기 위해서
+  // dataset으로 처리한 것 처럼 만들기 위해서 아래와 같이
   if(prop.includes('data')) {
-    let rest = prop.slice(5);
+    let rest = prop.slice(5); //data-
     node.dataset[rest] = value;  //[]를 쓰는 이유 복습
   }
   if(!value) throw new SyntaxError('setAttr 함수의 세 번째 인자는 필수값입니다.');
