@@ -5,8 +5,7 @@
 // 5. 화면에 출력하기
 // 이걸 다 함수형으로 만들기!
 
-eslint no-undef:'warn';
-eslint no-unused-vars: 'off';
+import {getNode} from "./lib/index.js"
 
 const firstInput = getNode('#firstNumber');
 const secondInput = getNode('#secondNumber');
@@ -14,7 +13,7 @@ const done = getNode('#done');
 
 function getInputValue(node) {
   if(typeof node === 'string') node = getNode(node);
-  if(node.tagName !== 'INPUT') refError('getInputValue 함수는 INPUT ELEMENT만 허용합니다.');
+  // if(node.tagName !== 'INPUT') refError('getInputValue 함수는 INPUT ELEMENT만 허용합니다.');
   return node.value;
 }
 

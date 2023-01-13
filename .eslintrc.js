@@ -12,6 +12,7 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-
+      eslint no-undef:'warn';
+      eslint no-unused-vars: 'off';
     }
 }

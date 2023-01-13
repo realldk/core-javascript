@@ -1,11 +1,11 @@
-function addClass (node, value) {
+export function addClass (node, value) {
   if(typeof node === 'string') node = getNode(node);
   if(typeof value !== 'string') typeError('addClass 함수의 두 번째 인자는 문자 타입이어야 합니다.');
   node.classList.add(value);
 }
 
 // removeClass 함수 만들기, 입력할 클래스명을 입력하지 않으면 선택한 클래스에 있는 걸 다 지우기
-function removeClass (node, className) {
+export function removeClass (node, className) {
   if(typeof node === 'string') node = getNode(node);
   if(!className) {
     node.className = '';
@@ -16,7 +16,7 @@ function removeClass (node, className) {
 }
 
 //toggleClass 함수 만들기
-function toggleClass (node, className) {
+export function toggleClass (node, className) {
   if(typeof node === 'string') node = getNode(node);
   if(typeof className !== 'string') typeError('toggleClass 함수의 두 번째 인자는 문자 타입이어야 합니다.');
   node.classList.toggle(className);
@@ -46,7 +46,7 @@ function setCss (node, cssattr, value) {
 // setCss('.first', 'color', 'red');
 
 // get과 set을 한 번에 쓰는 함수 만들기
-function css (node, cssattr, value) {
+export function css (node, cssattr, value) {
   if(!value) return getCss(node, cssattr);
   else setCss(node, cssattr, value);
 }
