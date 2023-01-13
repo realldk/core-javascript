@@ -1,7 +1,4 @@
-function handler(){
-  console.log('hit !');
-  css('.second', 'display', 'none');
-}
+
 
 // 지우는 유틸함수? 여기 모르겠음 클로저가 자기가 살았던 환경을 기억하기 때문에 쓴다.
 function bindEvent(node, type, handler){
@@ -16,7 +13,3 @@ function bindEvent(node, type, handler){
 
   return ()=> node.removeEventListener(type, handler);
 }
-// 클
-const off = bindEvent('.first', 'click', handler)
-
-bindEvent('.second', 'click', off);

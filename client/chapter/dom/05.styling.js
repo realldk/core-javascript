@@ -47,6 +47,8 @@ toggleClass ('.check', 'is-active');
 
 // - style.cssText - "style" 속성 전체에 대응하므로 스타일 전체에 대한 문자열 저장
 
+first.style.cssText = `color: red;
+background-color: green;`;
 first.style.transform = 'rotate(180deg)';
 
 /* 계산된 스타일 읽기 ------------------------------------------------------- */
