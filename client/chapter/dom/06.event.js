@@ -23,7 +23,7 @@ function handler(){
 
 first.addEventListener('click', handler);
 
-// 지우는 유틸함수? 여기 모르겠음
+// 지우는 유틸함수 알겠음
 // function bindEvent(node, type, handler){
 //   if(typeof node === 'string'){
 //     node = getNode(node);
@@ -45,8 +45,10 @@ ground.addEventListener('click', function(e){
   ball.style.transform = `translate(${e.offsetX - ball.offsetWidth / 2}px, ${e.offsetY - ball.offsetHeight / 2}px)`;
 })
 
-ground.addEventListener('mousemove', function(e){
+/* ground.addEventListener('mousemove', function(e){
   ball.style.transform = `translate(${e.offsetX - ball.offsetWidth / 2}px, ${e.offsetY - ball.offsetHeight / 2}px)`;
-})
+}) */
 // - addEventListener
 // - removeEventListener
+
+
