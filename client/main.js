@@ -13,6 +13,7 @@ import { diceAnimation, disableElement, enableElement, getNode, getNodes, invisi
 // 4. visible 활성 유틸 함수 만들기
 // 5. toggleState 유틸 함수 만들기 
 
+const recordListWrapper = getNode('.recordListWrapper');
 
 
 // diceAnimation()
@@ -23,7 +24,6 @@ import { diceAnimation, disableElement, enableElement, getNode, getNodes, invisi
 
 // 버튼 그룹을 배열로 받기. 배열 구조 할당을 이용
 const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > button');
-
 
 
 // IIFE 핸들러함수를 한 번만 호출하면 된다.
@@ -42,7 +42,7 @@ const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > 
 //     isRolling = !isRolling;
 //   }
 // })();
-const recordListWrapper = getNode('.recordListWrapper');
+
 
 // [ 레코드 템플릿 뿌리기 ]
 // 1. renderRecordListItem 함수 만들기
@@ -59,9 +59,9 @@ function renderRecordListItem(){
   let diceResult = attr('#cube', 'data-dice')
   let template = /* html */ `
   <tr>
-  <td>${round++}</td>
-  <td>${diceResult}</td>
-  <td>${total += +diceResult}</td>
+    <td>${round++}</td>
+    <td>${diceResult}</td>
+    <td>${total += +diceResult}</td>
   </tr>
   `;
   insertLast('.recordList > tbody',template);
@@ -73,8 +73,8 @@ function renderRecordListItem(){
 /* -------------------------------------------------------------------------- */
 /*                                    event                                   */
 /* -------------------------------------------------------------------------- */
-// 클로저. 호출을 두 번 해야 한다.
 
+// 클로저. 호출을 두 번 해야 한다.
 const handlerRollingDice = () => {
   let stopAnimation;
   let isRolling = false; //주사위 굴리기 버튼하나로 굴리고 멈추는 toggle을 구현하기 위해서
