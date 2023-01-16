@@ -1,13 +1,15 @@
-export function addClass (node, value) {
+import { getNode } from "./getNode.js";
+
+export function addClass (node, className) {
   if(typeof node === 'string') node = getNode(node);
-  if(typeof value !== 'string') typeError('addClass 함수의 두 번째 인자는 문자 타입이어야 합니다.');
-  node.classList.add(value);
+  if(typeof className !== 'string') typeError('addClass 함수의 두 번째 인자는 문자 타입이어야 합니다.');
+  node.classList.add(className);
 }
 
 // removeClass 함수 만들기, 입력할 클래스명을 입력하지 않으면 선택한 클래스에 있는 걸 다 지우기
 export function removeClass (node, className) {
   if(typeof node === 'string') node = getNode(node);
-  if(!className) {
+  if(!className) {  //node의 클래스를 다 지워버리기
     node.className = '';
     return;
   }

@@ -1,3 +1,3 @@
-export * from "./refError"
-export * from "./typeError"
-export * from "./syntaxError"
+export * from "./refError.js"
+export * from "./typeError.js"
+export * from "./syntaxError.js"

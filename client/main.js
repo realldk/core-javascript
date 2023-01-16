@@ -5,7 +5,7 @@
 // 5. 화면에 출력하기
 // 이걸 다 함수형으로 만들기!
 
-import {getNode} from "./lib/index.js"
+import {getNode, insertLast} from "./lib/index.js"
 
 const firstInput = getNode('#firstNumber');
 const secondInput = getNode('#secondNumber');
