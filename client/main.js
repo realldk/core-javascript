@@ -4,7 +4,6 @@ import {getNode, getInputValue, getRandom, insertLast, clearContents, isNumericS
 import { jujeobData } from "./data/data.js"
 const submit = getNode('#submit');
 const resultArea = getNode('.result');
-console.log(submit);
 
 
 
@@ -41,8 +40,9 @@ function clickCopyHandler() {
   //navigator.clipboard.writeText(text)
   clickCopy(text)  // return값이 있는거랑 왜 promise가 뜨는건지
   // clickCopy(text).then(()=>{
-  // showAlert('.alert-success','클립보드 복사가 완료됐습니다.', 2000);
+  showAlert('.alert-success','클립보드 복사가 완료됐습니다.', 2000);
   // })
+  
 }
 
 submit.addEventListener('click', clickSubmitHandler)
