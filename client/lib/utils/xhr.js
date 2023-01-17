@@ -86,6 +86,7 @@ xhrData.get = (url, onSuccess, onFail) =>{
 xhrData.post = (url, body, onSuccess, onFail) =>{
   xhrData({
     method: 'POST',
+    url,
     body,
     onSuccess,
     onFail
