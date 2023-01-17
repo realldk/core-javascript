@@ -24,7 +24,7 @@
 // xhr.send();
 
 // 위 내용을 함수로 만들기
-function xhrData({
+export function xhrData({
   method= 'GET',
   url = '',
   body = null,
@@ -67,11 +67,11 @@ function xhrData({
   xhr.send(JSON.stringify(body));
 }
 
-xhrData({
+/* xhrData({
   url: 'https://jsonplaceholder.typicode.com/users/1',
   onSuccess: (result)=>{console.log(result)},
   onFail: (err)=>{console.error(err)}
-})
+}) */
 
 // 메서드로 crud만들기
 // 단축표기법 쓴거 (shorthand property) 
@@ -111,7 +111,7 @@ xhrData.delete = (url, onSuccess, onFail) => {
   })
 }
 // 실행하면
-xhrData.get(
+/* xhrData.get(
   'https://jsonplaceholder.typicode.com/users/1',
   (result)=>{
     console.log(result)
@@ -119,7 +119,7 @@ xhrData.get(
   (result)=>{
     console.log(result)
   }
-)
+) */
 
 // xhrData('POST', 'https://jsonplaceholder.typicode.com/users', {
 //   "name": "DG",
