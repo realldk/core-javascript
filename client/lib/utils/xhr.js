@@ -25,7 +25,7 @@ xhr.addEventListener('readystatechange', ()=>{
 // 서버에 보내주는 요청. 통신의 시작과 세트
 xhr.send(); */
 
-// 위 내용을 함수로 만들기
+// 위 내용을 함수로 만들기 콜백방식
 // 매개변수로 객체를 받으면서 바로 구조 분해 할당을 한 것
 export function xhrData({
   method = 'GET',

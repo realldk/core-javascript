@@ -67,7 +67,7 @@ export function delayP(options = {}){
   })
 }
 
-/* // shouldReject 인수를 넣어보기
+/* // 강제로 성공과 실패를 보려고 shouldReject 인수를 넣어보기
 delayP({
   shouldReject: true,
   timeout: 1500,

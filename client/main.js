@@ -1,4 +1,12 @@
-import { insertLast, xhrData, xhrPromise } from './lib/index.js'
+import { insertLast, xhrData, xhrPromise, generalLam } from './lib/index.js'
+
+async function render(){
+  let response = await generalLam.get('https://jsonplaceholder.typicode.com/users/1')
+
+  console.log(response.data)
+
+}
+render()
 
 /* xhrPromise
 .get('https://jsonplaceholder.typicode.com/users/1')
