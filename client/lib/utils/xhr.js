@@ -32,8 +32,8 @@ export function xhrData({
   onSuccess = null,
   onFail = null,
   headers = {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",  //동일 출처 정책?  
+    "Content-Type": "application/json",  //Content-Type은 필수
+    "Access-Control-Allow-Origin": "*",  //Access동일 출처 정책?  
   },
 } = {}) {
   
@@ -57,14 +57,14 @@ export function xhrData({
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*", 
   }
-  가 배열 ["Content-Type": "application/json"], ["Access-Control-Allow-Origin": "*"] 두 개로 된다.
+  가 배열 ["Content-Type", "application/json"], ["Access-Control-Allow-Origin", "*"] 두 개로 된다.
   이 두 개의 배열에 forEach(([key,value])=>{
     xhr.setRequestHeader(key, value);
   })
-  첫 번째 순회에
+  첫 번째 배열 ["Content-Type", "application/json"] 순회에
   let ket = "Content-Type"
   let value = "application/json"을 해서 xhr.setRequestHeader(key, value)를 실행
-  두 번째 순회에
+  두 번째 배열 ["Access-Control-Allow-Origin", "*"] 순회에
   let key = "Access-Control-Allow-Origin"
   let value = "*"
   xhr.setRequestHeader(key, value)를 실행하는 것 */
