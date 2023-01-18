@@ -1,4 +1,5 @@
 import { getNode } from '../dom/getNode.js';
+import { isNumber, isObject } from './typeOf.js';
 
 
 const first = getNode('.first');
@@ -36,7 +37,22 @@ const defaultOptions = {
   errorMessage: '알 수 없는 오류가 발생했습니다.'
 }
 
-function delayP(shouldReject = false, timeout = 1000, data = '성공했습니다', errorMessage = '알 수 없는 오류가 발생했습니다.'){
+export function delayP(options = {}){
+
+  let config = {...defaultOptions}; //얕복
+
+  // 인수로 숫자 3000만 넣었을 때 처리를 위해
+  if(isNumber(options)){
+    config.timeout = options;
+  }
+
+  // 함수의 인수로 객체 키:값을 기본값과 다르게 쓰려고 정의 해놓은 객체와 내가 쓰고 싶은 걸 합성하는
+  // 객체 합성 mixin
+  if(isObject(options)){
+    config = {...config, ...options};  //같은 키가 있다면 뒤에 합성한 것으로 덮어쓴다.
+  }
+
+  const {shouldReject, data, errorMessage, timeout} = config;
   return new Promise((resolve, reject)=>{
     setTimeout(()=>{
       // 삼항식으로
@@ -51,7 +67,12 @@ function delayP(shouldReject = false, timeout = 1000, data = '성공했습니다
 }
 
 // shouldReject 인수를 넣어보기
-delayP().then((res)=>{
+delayP({
+  shouldReject: true,
+  timeout: 1500,
+  data: '안녕',
+  errorMessage: '잘가'
+}).then((res)=>{
   console.log(res);
 })
 
