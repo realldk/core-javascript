@@ -29,26 +29,41 @@ delayP()
   first.style.top = '0px';
 })
 
+const defaultOptions = {
+  shouldReject: false,
+  timeout: 1000,
+  data: '성공',
+  errorMessage: '알 수 없는 오류가 발생했습니다.'
+}
 
-function delayP(timeout = 1000){
+function delayP(shouldReject = false, timeout = 1000, data = '성공했습니다', errorMessage = '알 수 없는 오류가 발생했습니다.'){
   return new Promise((resolve, reject)=>{
     setTimeout(()=>{
-      // resolve('성공!');
-      reject('실패');
+      // 삼항식으로
+      // !shouldReject ? resolve(data) : reject(errorMessage) 
+      if(!shouldReject){
+        resolve(data);
+      } else{
+        reject(errorMessage);
+      }
     }, timeout)
   })
 }
 
-
-// resove를 실행했을 때
+// shouldReject 인수를 넣어보기
 delayP().then((res)=>{
   console.log(res);
 })
 
-// reject를 실행했을 때
+/* // resove를 실행했을 때
+delayP().then((res)=>{
+  console.log(res);
+}) */
+
+/* // reject를 실행했을 때
 delayP().then((res)=>{
   console.log(res);
 })
 // 만 하면 uncaught promise가 뜨고
 // catch를 해줘야 한다
-.catch(err=> {console.log(err);})
+.catch(err=> {console.log(err);}) */
