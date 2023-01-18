@@ -18,7 +18,14 @@ function delay(callback, timeout = 1000){
 //   })
 // })
 
-// 위 콜백함수의 지옥을 아래와 같이 나타낼 수 있다.
+const defaultOptions = {
+  shouldReject: false,
+  timeout: 1000,
+  data: '성공',
+  errorMessage: '알 수 없는 오류가 발생했습니다.'
+}
+
+/* // 위 콜백함수의 지옥을 아래와 같이 나타낼 수 있다.
 delayP()
 .then(()=>{
   first.style.top = '-100px';
@@ -28,14 +35,8 @@ delayP()
   return delayP()
 }).then(()=>{
   first.style.top = '0px';
-})
+}) */
 
-const defaultOptions = {
-  shouldReject: false,
-  timeout: 1000,
-  data: '성공',
-  errorMessage: '알 수 없는 오류가 발생했습니다.'
-}
 
 export function delayP(options = {}){
 
@@ -66,7 +67,7 @@ export function delayP(options = {}){
   })
 }
 
-// shouldReject 인수를 넣어보기
+/* // shouldReject 인수를 넣어보기
 delayP({
   shouldReject: true,
   timeout: 1500,
@@ -74,7 +75,7 @@ delayP({
   errorMessage: '잘가'
 }).then((res)=>{
   console.log(res);
-})
+}).catch((err)=>{console.log(err);}) */
 
 /* // resove를 실행했을 때
 delayP().then((res)=>{
@@ -88,3 +89,14 @@ delayP().then((res)=>{
 // 만 하면 uncaught promise가 뜨고
 // catch를 해줘야 한다
 .catch(err=> {console.log(err);}) */
+
+
+// async await
+
+async function delayA(){
+  return '완료'
+}
+
+let result = await delayA();
+
+console.log(result)

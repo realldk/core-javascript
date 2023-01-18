@@ -5,6 +5,8 @@
 // 3: interative 인터랙티브
 // 4: complete 완료
 
+import { typeError } from '../error/typeError.js';
+
 /* const xhr = new XMLHttpRequest();
 
 // 비동기 통신의 시작
@@ -134,7 +136,7 @@ xhrData.delete = (url, onSuccess, onFail) => {
     onFail
   })
 }
-// 실행하면
+/* // 실행하면
 xhrData.get(
   'https://jsonplaceholder.typicode.com/users/1',
   (result)=>{
@@ -143,7 +145,7 @@ xhrData.get(
   (error)=>{
     console.error(error)
   }
-)
+) */
 
 // xhrData('POST', 'https://jsonplaceholder.typicode.com/users', {
 //   "name": "DG",
@@ -167,3 +169,90 @@ xhrData.get(
 //       "bs": "harness real-time e-markets"
 //   }
 // })
+
+
+// promise API
+
+const defaultOptions = {
+  url:'',
+  method: 'GET',
+  header: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  },
+  body: null
+}
+
+
+export function xhrPromise(options = {}){
+  
+  const xhr = new XMLHttpRequest();
+  // Object.assign으로 객체 합성하기와 동시에 구조 분해 할당 해버리기
+  // 새로운 객체 {}도 꼭 넣어줘야 한다.
+  const {method, url, body, headers} = Object.assign({},defaultOptions, options)
+  // const {method, url, body, headers} = {...defaultOptions, ...options};는 그냥 덮여씌워진다? 그래서 변수에 {...defaultOptions}로 얕복하고 합성을한다.
+
+  if(!url) typeError('서버와 통신할 url 인자는 반드시 필요합니다.');
+
+  xhr.open(method, url);
+  
+  xhr.send(body ? JSON.stringify(body) : null)
+  
+  return new Promise((resolve, reject) => {
+    xhr.addEventListener('readystatechange', ()=>{
+      const {status, readyState, response} = xhr;
+      
+      if(status >= 200 && status < 400){
+        if(readyState === 4){
+          resolve(JSON.parse(response));
+        }else{
+          reject('실패');
+        }
+      }
+    })
+  })
+
+}
+
+// 실행해보기
+// xhrPromise({
+//   url:'https://jsonplaceholder.typicode.com/users/1'
+// })
+// .then(res=>{console.log(res);})
+// .catch(err=>{console.log(err)})
+
+/* // 프로미스를 쓰지 않았을 때는 아래와 같이 썼다
+xhrData.get(
+  'www.naver.com',
+  ()=>{
+
+  }, // success
+  ()=>{
+    
+  }  // fail
+) */
+
+xhrPromise.get = (url, header) => {
+  return xhrPromise({ //return을 해줘야 프로미스를 반환한다.
+    url, header
+  })
+}
+
+xhrPromise.post = (url, body, header) => {
+  return xhrPromise({
+    url, body, header, method: 'POST'
+  })
+}
+
+xhrPromise.put = (url, body, header) => {
+  return xhrPromise({
+    url, body, header, method: 'PUT'
+  })
+}
+
+xhrPromise.delete = (url, header) => {
+  return xhrPromise({
+    url, header, method: 'DELETE'
+  })
+}
+
