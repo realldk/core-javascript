@@ -41,10 +41,14 @@ import { insertLast, xhrData, xhrPromise, generalLam, delayP, getNode, renderUse
 const userCardContainer = getNode('.user-card-inner')
 
 async function rendingUserList () {
-  let response = await generalLam.get('https://jsonplaceholder.typicode.com/users/1')
+  let response = await generalLam.get('https://jsonplaceholder.typicode.com/users/')
 
-  let userData = response.data;  
-  renderUserCard(userCardContainer, userData);  //객체 하나만 받아서 렌더링
+  let userData = response.data;
+  // 객체 전체를 받아 렌더링
+  userData.forEach(data => {  
+    renderUserCard(userCardContainer, data);  
+  })
+  
 }
 
 rendingUserList();
