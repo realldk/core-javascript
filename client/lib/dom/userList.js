@@ -1,5 +1,12 @@
-export const createUserCard = (user) =>{
-  const {id, name, email, website:site = '사이트'} = user //website라는 키값을 site라는 이름으로 받아서 쓰겠다.
+import { insertLast } from './insert.js'
+
+const createUserCard = ({
+  id = '',
+  name = '',
+  email = '',
+  website:site = '사이트'
+}={}) =>{
+  //website라는 키값을 site라는 이름으로 받아서 쓰겠다.
   return /* html */`
   <article class="user-card" data-index="user-${id}">
     <h3 class="user-name">${name}</h3>
@@ -17,8 +24,6 @@ export const createUserCard = (user) =>{
 `
 }
 
-createUserCard({
-  id: 1,
-  name: 'generalRam',
-  email: 'Ram@google.com',
-  website: 'ramjwi.com'})
+export const renderUserCard =(target, data) => {
+  insertLast(target, createUserCard(data));
+}

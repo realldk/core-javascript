@@ -1,4 +1,4 @@
-import { insertLast, xhrData, xhrPromise, generalLam, delayP, createUserCard } from './lib/index.js'
+import { insertLast, xhrData, xhrPromise, generalLam, delayP, getNode, renderUserCard } from './lib/index.js'
 
 // async function render(){
 //   await delayP(2000);
@@ -35,13 +35,16 @@ import { insertLast, xhrData, xhrPromise, generalLam, delayP, createUserCard } f
 //1. rendingUserList라는 함수 만들고
 //ajax로 get user list하기
 
+// dom/userList.js에
 // 2. 유저 카드 생성하는 함수
-// 생성된 카드로 렌더링해주는 함수를 만들어야한다.
-async function rendingUserList () {
-  let response = await generalLam.get('https://jsonplaceholder.typicode.com/users/')
+// 생성된 카드로 렌더링해주는 함수도 만들자.
+const userCardContainer = getNode('.user-card-inner')
 
-  let userData = response.data;
-  
-  console.log(userData)
+async function rendingUserList () {
+  let response = await generalLam.get('https://jsonplaceholder.typicode.com/users/1')
+
+  let userData = response.data;  
+  renderUserCard(userCardContainer, userData);  //객체 하나만 받아서 렌더링
 }
-  rendingUserList()
+
+rendingUserList();
