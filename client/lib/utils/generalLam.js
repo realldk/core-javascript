@@ -7,11 +7,9 @@ const defaultOptions = {
   body: null,
   cache: 'no-cache',
   credentail: 'same-origin',
-  redirect: 'fowllow',
+  redirect: 'follow',
   referrePolicy: 'no-referre',
-  headers:{
-    'Content-Type':'application/json; charset=UTF-8' 
-  }
+  headers: {'Content-Type':'application/json; charset=UTF-8'}
 }
 
 export const generalLam = async (options = {}) => {
@@ -23,7 +21,7 @@ export const generalLam = async (options = {}) => {
     headers: {...(defaultOptions.headers ?? {}), ...(options.headers ?? {})}
   }
 
-  let response = await fetch(url, restOptions)
+    let response = await fetch(url, restOptions)
 
   // 통신이 성공했는지 확인
   if(response.ok){
@@ -62,6 +60,7 @@ generalLam.put = (url, body, options) => {
 }
 generalLam.delete = (url, options) => {
   return generalLam({
+    method: 'DELETE',
     url,
     ...options  //!!이렇게 써야한다
   })

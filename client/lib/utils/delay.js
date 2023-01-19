@@ -77,7 +77,7 @@ delayP({
   console.log(res);
 }).catch((err)=>{console.log(err);}) */
 
-/* // resove를 실행했을 때
+/* // resolve를 실행했을 때
 delayP().then((res)=>{
   console.log(res);
 }) */
