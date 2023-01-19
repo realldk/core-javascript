@@ -1,4 +1,5 @@
-export const createUserCard = (id, name, email, website) =>{
+export const createUserCard = (user) =>{
+  const {id, name, email, website:site = '사이트'} = user //website라는 키값을 site라는 이름으로 받아서 쓰겠다.
   return /* html */`
   <article class="user-card" data-index="user-${id}">
     <h3 class="user-name">${name}</h3>
@@ -7,7 +8,7 @@ export const createUserCard = (id, name, email, website) =>{
         <a class="user-email" href="mailto:${email}">${email}</a>
       </div>
       <div>
-        <a class="user-website" href="http://${website}" target="_blank" rel="noopener noreferer">${website}</a>
+        <a class="user-website" href="http://${site}" target="_blank" rel="noopener noreferer">${site}</a>
       </div>
     </div>
     <button class="delete">삭제</button>
@@ -16,4 +17,8 @@ export const createUserCard = (id, name, email, website) =>{
 `
 }
 
-createUserCard(1,'generalRam', 'Ram@google.com', 'ramjwi.com')
+createUserCard({
+  id: 1,
+  name: 'generalRam',
+  email: 'Ram@google.com',
+  website: 'ramjwi.com'})
