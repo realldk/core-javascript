@@ -45,7 +45,7 @@ async function rendingUserList () {
   renderSpinner(userCardContainer);
   try{
     await delayP(2000);
-    // .remove()하면 사라진다. 왜?
+    // .remove()하면 사라진다. element.remove()메서드가 있다. element를 DOM에서 지워준다.
     getNode('.loadingSpinner').remove();
     let response = await generalLam.get('http://localhost:3000/users')
 
@@ -55,15 +55,15 @@ async function rendingUserList () {
       renderUserCard(userCardContainer, data);  
     })
     //배열로 만들어주는 gsap의 유틸함수
-    console.log(gsap.utils.toArray('.user-card'))
+    // gsap.utils.toArray('.user-card')
     // theme.js에 설정해놓은 함수로 배열에 색입혀주기
     changeColor('.user-card')
-    //h2태그를 잡아서 x방향으로 100만큼 가겠다.
+    //gsap을 이용한 애니메이션 효과 설정
     gsap.to(gsap.utils.toArray('.user-card'), {
       x:0,
       opacity:1,
       duration:1.5,
-      stagger: 0.2} )
+      stagger: 0.2} ) // 등장하는 요소들간의 시간간격
 
   }catch(err){
     renderEmptyCard(userCardContainer)
@@ -72,6 +72,7 @@ async function rendingUserList () {
 
 // 삭제버튼을 클릭하면 그 카드가 없어지게
 // delete통신 만들기
+// 이벤트 위임
 function deletehandler(e) {
   let deleteButton = e.target.closest('button');
   let article = e.target.closest('article');
