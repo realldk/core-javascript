@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "all": "run-p serve start",
+    "all": "run-p server start",
     "server": "npx json-server server/data/data.json",
     "start": "npx live-server client --host=localhost --port=5500 --no-browser"
   },
