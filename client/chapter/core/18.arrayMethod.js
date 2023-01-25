@@ -9,7 +9,7 @@ console.log(Array.isArray(arr));
 
 // isArray가 만들어지는 원리
 function isArray(data) {
-  return Object.prototype.toString.call(null).slice(8, -1).toLowerCase() === 'array';
+  return Object.prototype.toString.call(data).slice(8, -1).toLowerCase() === 'array';
 }
 // 
 /* 요소 순환 -------------------------------------------------------------- */
@@ -66,7 +66,7 @@ let template = todo.map(list=>{  //todoList가 들어가는 이유. 그냥 변�
 
 //? 뭐인지 모르겠음
 template.forEach((item)=>{
-  document.body.insertAdjacentHTML('beforeend',item)
+  return document.body.insertAdjacentHTML('beforeend',item)
 })
 
 let newArray = arr.map(item => item * 2);
@@ -89,7 +89,7 @@ const users = [
 
 // find
 const find = users.find((item,index)=>{
-  return item.id === 3; // id < 2 , id < 5에서 해당되는 처음 하나만 반환
+  return item.id === 3; // id < 5였으면 해당되는 처음 하나만 반환
 })
 // findIndex 해당 요소의 index만 반환
 const findIndex = users.findIndex((item)=>{
